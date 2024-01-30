@@ -47,6 +47,7 @@ keda-addon.sh
 Install an example
 
 ```
+git clone https://github.com/kedacore/http-add-on.git
 helm install xkcd http-add-on/examples/xkcd -n keda
 ```
 
