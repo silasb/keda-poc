@@ -2,6 +2,16 @@
 
 Testing KEDA by using Kind
 
+## Caveats
+
+Per https://github.com/kedacore/http-add-on/issues/882
+
+Keda works by polling to see if requests are in a queue.  If by chance, when KEDA polls and the request isn't in the queue KEDA won't reset any counters and therefore will scale down the deployment.
+
+The better method would be to change it like so, this will allow in-flight slow clients to reset the KEDA
+
+"store and propagate last request timestamp and return if the scaler is active"
+
 ## Getting Started
 
 Installing Kind
@@ -85,3 +95,4 @@ After about 5 minutes, the deployment will scale back down and you'll see events
 0s          Normal   Killing                      pod/xkcd-795f74df74-f7ptz    Stopping container xkcd
 0s          Normal   SuccessfulDelete             replicaset/xkcd-795f74df74   Deleted pod: xkcd-795f74df74-f7ptz
 ```
+
