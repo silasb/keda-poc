@@ -51,7 +51,12 @@ Install keda-core
 Install keda-addon
 
 ```
-keda-addon.sh
+./keda-addon.sh
+```
+
+Fix for validating webhook configurations
+```
+k delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 ```
 
 Install an example
